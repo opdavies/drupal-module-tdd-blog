@@ -39,7 +39,17 @@ class PageListTest extends BrowserTestBase {
     // This page is not published, so it should not be visible.
     $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
 
-    // When I view the page.
+    // Rather than testing the rendered HTML, we are going to load the view
+    // results programmatically and run assertions against the data it returns.
+    // This makes it easier to test certain scenarios, and ensures that the
+    // test is future-proofed and won't fail at a later date due to a change in
+    // the presentation code.
+    $result = views_get_view_result('pages');
+
+    // $result contains an array of Drupal\views\ResultRow objects. We can use
+    // a Collection here to pluck the nid from each node and return them as an
+    // array.
+    $nids = collect($result)->pluck('nid')->all();
 
     // Then I should only see the published pages.
   }
