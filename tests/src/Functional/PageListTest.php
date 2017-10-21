@@ -28,8 +28,16 @@ class PageListTest extends BrowserTestBase {
    * pages or content of different types should not be shown.
    */
   public function testOnlyPublishedPagesAreShown() {
-    // Given that a have a mixture of published and unpublished pages, as well
-    // as other types of content.
+    $this->drupalCreateContentType(['type' => 'article']);
+
+    // This is a published page, so it should be visible.
+    $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
+
+    // This is an article, so it should not be visible.
+    $this->drupalCreateNode(['type' => 'article']);
+
+    // This page is not published, so it should not be visible.
+    $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
 
     // When I view the page.
 
