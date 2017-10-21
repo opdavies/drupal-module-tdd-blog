@@ -67,7 +67,7 @@ class PageListTest extends BrowserTestBase {
 
     $nids = array_column(views_get_view_result('pages'), 'nid');
 
-    // Then I should see pages in the correct order.
+    $this->assertEquals([1, 4, 3, 2], $nids);
   }
 
 }
