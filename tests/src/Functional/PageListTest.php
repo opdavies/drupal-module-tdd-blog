@@ -56,4 +56,15 @@ class PageListTest extends BrowserTestBase {
     $this->assertEquals([1], $nids);
   }
 
+  /**
+   * Ensure that the results are ordered by title.
+   */
+  public function testResultsAreOrderedAlphabetically() {
+    // Given I have multiple nodes with different titles.
+
+    // When I view the pages list.
+
+    // Then I should see pages in the correct order.
+  }
+
 }
