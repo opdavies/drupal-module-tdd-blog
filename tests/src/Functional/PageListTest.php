@@ -60,7 +60,10 @@ class PageListTest extends BrowserTestBase {
    * Ensure that the results are ordered by title.
    */
   public function testResultsAreOrderedAlphabetically() {
-    // Given I have multiple nodes with different titles.
+    $this->drupalCreateNode(['title' => 'Page A']);
+    $this->drupalCreateNode(['title' => 'Page D']);
+    $this->drupalCreateNode(['title' => 'Page C']);
+    $this->drupalCreateNode(['title' => 'Page B']);
 
     // When I view the pages list.
 
