@@ -47,11 +47,13 @@ class PageListTest extends BrowserTestBase {
     $result = views_get_view_result('pages');
 
     // $result contains an array of Drupal\views\ResultRow objects. We can use
-    // a Collection here to pluck the nid from each node and return them as an
-    // array.
-    $nids = collect($result)->pluck('nid')->all();
+    // array_column to get the nid from each node and return them as an array.
+    $nids = array_column($result, 'nid');
 
-    // Then I should only see the published pages.
+    // Only node 1 matches the criteria of being a published page, so only that
+    // node ID should be being returned from the view. assertEquals() can be
+    // used to compare the expected result to what is being returned.
+    $this->assertEquals([1], $nids);
   }
 
 }
