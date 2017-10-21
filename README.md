@@ -12,6 +12,16 @@ develop a module to the following acceptance criteria:
 - I want to see a list of all published pages at `/pages`
 - Ordered alphabetically by title
 
+## Dependencies
+
+The module has a dependency on the `tightenco/collect` library which is
+required in its `composer.json` file. This will need to be installed via
+Composer in order for the tests to run.
+
+The library is used only to make it simpler to retrieve data from within an
+array of view results so that assertions can be made against it. The same tests
+could be written in a slightly different way without the dependency if needed.
+
 ## Running the Tests
 
 These tests are functional tests based on the `BrowserTestBase` class so need
