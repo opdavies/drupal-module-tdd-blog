@@ -3,6 +3,12 @@
 A demo module to accompany my [TDD - Test Driven Drupal][0] talk at DrupalCamp
 Dublin 2017.
 
+In order to see my workflow of writing comments first, converting them into
+failing tests, and then writing the implementation code to make them pass, you
+can see the [list of previous commits][1] and see each step taken, as well as
+[the tags][2] that identify the commits when each failing test is added and
+then subsequently passes.
+
 ## Acceptance Criteria
 
 This module will be used to demonstrate how to take a test-driven approach to
@@ -11,16 +17,6 @@ develop a module to the following acceptance criteria:
 - As a site visitor
 - I want to see a list of all published pages at `/pages`
 - Ordered alphabetically by title
-
-## Dependencies
-
-The module has a dependency on the `tightenco/collect` library which is
-required in its `composer.json` file. This will need to be installed via
-Composer in order for the tests to run.
-
-The library is used only to make it simpler to retrieve data from within an
-array of view results so that assertions can be made against it. The same tests
-could be written in a slightly different way without the dependency if needed.
 
 ## Running the Tests
 
@@ -48,3 +44,5 @@ rather than all of the tests within the module. For example:
 ```
 
 [0]: https://www.oliverdavies.uk/talks/tdd-test-driven-drupal
+[1]: https://github.com/opdavies/tdd_dublin/commits/HEAD
+[2]: https://github.com/opdavies/tdd_dublin/tags
