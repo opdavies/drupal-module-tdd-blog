@@ -60,13 +60,26 @@ class PageListTest extends BrowserTestBase {
    * Ensure that the results are ordered by title.
    */
   public function testResultsAreOrderedAlphabetically() {
+    // Create a number of nodes with different titles, specifying the title for
+    // each. These are intentionally not in alphabetical order so that when the
+    // assertion is written for the results to be in the expected order, it
+    // will fail, rather than them being in the expected order based on the
+    // default sort criteria based on the created timestamp.
+    //
+    // Also, the titles are added explicitly so that the assertion can be
+    // written against the expected order based on these titles. If they
+    // weren't added, each title would be automatically generated so the
+    // expected order would not be known beforehand.
     $this->drupalCreateNode(['title' => 'Page A']);
     $this->drupalCreateNode(['title' => 'Page D']);
     $this->drupalCreateNode(['title' => 'Page C']);
     $this->drupalCreateNode(['title' => 'Page B']);
 
+    // Get the result data from the view.
     $nids = array_column(views_get_view_result('pages'), 'nid');
 
+    // Compare the expected order based on the titles defined above to the
+    // ordered results from the view.
     $this->assertEquals([1, 4, 3, 2], $nids);
   }
 
