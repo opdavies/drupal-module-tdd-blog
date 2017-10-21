@@ -65,7 +65,7 @@ class PageListTest extends BrowserTestBase {
     $this->drupalCreateNode(['title' => 'Page C']);
     $this->drupalCreateNode(['title' => 'Page B']);
 
-    // When I view the pages list.
+    $nids = array_column(views_get_view_result('pages'), 'nid');
 
     // Then I should see pages in the correct order.
   }
