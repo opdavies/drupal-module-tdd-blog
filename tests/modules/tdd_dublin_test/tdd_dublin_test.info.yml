@@ -1,0 +1,6 @@
+name: TDD Dublin Test
+type: module
+core: 8.x
+dependencies:
+  - tdd_dublin:tdd_dublin
+hidden: true
