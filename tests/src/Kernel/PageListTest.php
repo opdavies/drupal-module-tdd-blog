@@ -4,7 +4,6 @@ namespace Drupal\Tests\tdd_dublin\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
 
 /**
  * @group tdd_dublin
@@ -42,8 +41,6 @@ class PageListTest extends KernelTestBase {
    * pages or content of different types should not be shown.
    */
   public function testOnlyPublishedPagesAreShown() {
-    NodeType::create(['type' => 'article', 'name' => t('Article')]);
-
     // This is a published page, so it should be visible.
     Node::create($this->getValidParams(['status' => TRUE]))->save();
 
