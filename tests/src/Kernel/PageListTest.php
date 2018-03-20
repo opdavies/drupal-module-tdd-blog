@@ -42,13 +42,13 @@ class PageListTest extends KernelTestBase {
    */
   public function testOnlyPublishedPagesAreShown() {
     // This is a published page, so it should be visible.
-    Node::create($this->getValidParams(['status' => TRUE]))->save();
+    Node::create($this->validParams(['status' => TRUE]))->save();
 
     // This is an article, so it should not be visible.
-    Node::create($this->getValidParams(['type' => 'article']))->save();
+    Node::create($this->validParams(['type' => 'article']))->save();
 
     // This page is not published, so it should not be visible.
-    Node::create($this->getValidParams(['status' => FALSE]))->save();
+    Node::create($this->validParams(['status' => FALSE]))->save();
 
     // Rather than testing the rendered HTML, we are going to load the view
     // results programmatically and run assertions against the data it returns.
@@ -80,10 +80,10 @@ class PageListTest extends KernelTestBase {
     // written against the expected order based on these titles. If they
     // weren't added, each title would be automatically generated so the
     // expected order would not be known beforehand.
-    Node::create($this->getValidParams(['title' => 'Page A']))->save();
-    Node::create($this->getValidParams(['title' => 'Page D']))->save();
-    Node::create($this->getValidParams(['title' => 'Page C']))->save();
-    Node::create($this->getValidParams(['title' => 'Page B']))->save();
+    Node::create($this->validParams(['title' => 'Page A']))->save();
+    Node::create($this->validParams(['title' => 'Page D']))->save();
+    Node::create($this->validParams(['title' => 'Page C']))->save();
+    Node::create($this->validParams(['title' => 'Page B']))->save();
 
     // Get the result data from the view.
     $nids = [];
@@ -105,7 +105,7 @@ class PageListTest extends KernelTestBase {
    * @return array
    *   The overridden parameters array, combined with the defaults.
    */
-  private function getValidParams(array $overrides = []) {
+  private function validParams(array $overrides = []) {
     return array_merge([
       'status' => TRUE,
       'title' => $this->randomString(),
