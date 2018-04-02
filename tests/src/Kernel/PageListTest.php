@@ -4,6 +4,7 @@ namespace Drupal\Tests\tdd_dublin\Kernel;
 
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\node\Entity\Node;
+use Drupal\views\ResultRow;
 
 /**
  * @group tdd_dublin
@@ -55,10 +56,9 @@ class PageListTest extends KernelTestBase {
     // This makes it easier to test certain scenarios, and ensures that the
     // test is future-proofed and won't fail at a later date due to a change in
     // the presentation code.
-    $nids = [];
-    foreach (views_get_view_result('pages') as $result) {
-      $nids[] = $result->nid;
-    }
+    $nids = array_map(function (ResultRow $result) {
+      return $result->_entity->id();
+    }, views_get_view_result('pages'));
 
     // Only node 1 matches the criteria of being a published page, so only that
     // node ID should be being returned from the view. assertEquals() can be
@@ -86,10 +86,9 @@ class PageListTest extends KernelTestBase {
     Node::create($this->validParams(['title' => 'Page B']))->save();
 
     // Get the result data from the view.
-    $nids = [];
-    foreach (views_get_view_result('pages') as $result) {
-      $nids[] = $result->nid;
-    }
+    $nids = array_map(function (ResultRow $result) {
+      return $result->_entity->id();
+    }, views_get_view_result('pages'));
 
     // Compare the expected order based on the titles defined above to the
     // ordered results from the view.
