@@ -18,6 +18,15 @@ develop a module to the following acceptance criteria:
 - I want to see a list of all published pages at `/pages`
 - Ordered alphabetically by title
 
+## Installation
+
+Within your Drupal 8 site:
+
+```bash
+cd modules
+git clone git@github.com:opdavies/drupal-tdd-dublin.git tdd_dublin
+```
+
 ## Running the Tests
 
 These tests are functional tests based on the `BrowserTestBase` class so need
