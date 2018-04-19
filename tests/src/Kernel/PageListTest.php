@@ -2,24 +2,21 @@
 
 namespace Drupal\Tests\tdd_dublin\Kernel;
 
-use Drupal\KernelTests\KernelTestBase;
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\Entity\Node;
 use Drupal\views\ResultRow;
 
 /**
  * @group tdd_dublin
  */
-class PageListTest extends KernelTestBase {
+class PageListTest extends EntityKernelTestBase {
 
   /**
    * {@inheritdoc}
    */
-  protected static $modules = [
+  public static $modules = [
     'node',
-    'system',
     'tdd_dublin',
-    'tdd_dublin_test',
-    'user',
     'views',
   ];
 
