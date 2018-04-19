@@ -4,12 +4,15 @@ namespace Drupal\Tests\tdd_dublin\Kernel;
 
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use Drupal\node\Entity\Node;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
 use Drupal\views\ResultRow;
 
 /**
  * @group tdd_dublin
  */
 class PageListTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
 
   /**
    * {@inheritdoc}
@@ -26,10 +29,10 @@ class PageListTest extends EntityKernelTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->installConfig(['tdd_dublin']);
-
     $this->installEntitySchema('node');
     $this->installEntitySchema('user');
+
+    $this->installConfig(['filter', 'tdd_dublin']);
   }
 
   /**
@@ -40,13 +43,13 @@ class PageListTest extends EntityKernelTestBase {
    */
   public function testOnlyPublishedPagesAreShown() {
     // This is a published page, so it should be visible.
-    Node::create($this->validParams(['status' => TRUE]))->save();
+    $this->createNode(['status' => TRUE]);
 
     // This is an article, so it should not be visible.
-    Node::create($this->validParams(['type' => 'article']))->save();
+    $this->createNode(['type' => 'article']);
 
     // This page is not published, so it should not be visible.
-    Node::create($this->validParams(['status' => FALSE]))->save();
+    $this->createNode(['status' => FALSE]);
 
     // Rather than testing the rendered HTML, we are going to load the view
     // results programmatically and run assertions against the data it returns.
@@ -77,10 +80,10 @@ class PageListTest extends EntityKernelTestBase {
     // written against the expected order based on these titles. If they
     // weren't added, each title would be automatically generated so the
     // expected order would not be known beforehand.
-    Node::create($this->validParams(['title' => 'Page A']))->save();
-    Node::create($this->validParams(['title' => 'Page D']))->save();
-    Node::create($this->validParams(['title' => 'Page C']))->save();
-    Node::create($this->validParams(['title' => 'Page B']))->save();
+    $this->createNode(['title' => 'Page A']);
+    $this->createNode(['title' => 'Page D']);
+    $this->createNode(['title' => 'Page C']);
+    $this->createNode(['title' => 'Page B']);
 
     // Get the result data from the view.
     $nids = array_map(function (ResultRow $result) {
@@ -90,23 +93,6 @@ class PageListTest extends EntityKernelTestBase {
     // Compare the expected order based on the titles defined above to the
     // ordered results from the view.
     $this->assertEquals([1, 4, 3, 2], $nids);
-  }
-
-  /**
-   * Default parameters for creating test nodes.
-   *
-   * @param array $overrides
-   *   An associative array of overridden values.
-   *
-   * @return array
-   *   The overridden parameters array, combined with the defaults.
-   */
-  private function validParams(array $overrides = []) {
-    return array_merge([
-      'status' => TRUE,
-      'title' => $this->randomString(),
-      'type' => 'page',
-    ], $overrides);
   }
 
 }
