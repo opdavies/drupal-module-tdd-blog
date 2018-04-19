@@ -1,4 +1,4 @@
-# TDD Dublin demo module
+# TDD Example Drupal 8 Module for DrupalCamp Dublin
 
 A demo module to accompany my [TDD - Test Driven Drupal][0] talk at DrupalCamp
 Dublin 2017.
@@ -24,7 +24,7 @@ Within your Drupal 8 site:
 
 ```bash
 cd modules
-git clone git@github.com:opdavies/drupal-tdd-dublin.git tdd_dublin
+git clone git@github.com:opdavies/drupal-module-tdd-dublin.git tdd_dublin
 ```
 
 ## Running the Tests
@@ -50,6 +50,6 @@ rather than all of the tests within the module. For example:
 vendor/bin/phpunit -c core modules/custom/tdd_dublin --filter=testOnlyPublishedPagesAreShown
 ```
 
-[0]: https://www.oliverdavies.uk/talks/tdd-test-driven-drupal
+[0]: https://www.oliverdavi.es/talks/tdd-test-driven-drupal
 [1]: https://github.com/opdavies/tdd_dublin/commits/HEAD
 [2]: https://github.com/opdavies/tdd_dublin/tags
