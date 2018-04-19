@@ -43,13 +43,13 @@ class PageListTest extends EntityKernelTestBase {
    */
   public function testOnlyPublishedPagesAreShown() {
     // This is a published page, so it should be visible.
-    $this->createNode(['status' => TRUE]);
+    $this->createNode(['type' => 'page', 'status' => TRUE]);
 
     // This is an article, so it should not be visible.
     $this->createNode(['type' => 'article']);
 
     // This page is not published, so it should not be visible.
-    $this->createNode(['status' => FALSE]);
+    $this->createNode(['type' => 'page', 'status' => FALSE]);
 
     // Rather than testing the rendered HTML, we are going to load the view
     // results programmatically and run assertions against the data it returns.
