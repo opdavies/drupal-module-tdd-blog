@@ -15,8 +15,8 @@ This module will be used to demonstrate how to take a test-driven approach to
 develop a module to the following acceptance criteria:
 
 - As a site visitor
-- I want to see a list of all published pages at `/pages`
-- Ordered alphabetically by title
+- I want to see a list of all published blog posts at `/blog`
+- Ordered by post date, with the newest posts first
 
 ## Installation
 
@@ -24,7 +24,7 @@ Within your Drupal 8 site:
 
 ```bash
 cd modules
-git clone git@github.com:opdavies/drupal-module-tdd-dublin.git tdd_dublin
+git clone git@github.com:opdavies/drupal-module-tdd-blog.git tdd_blog
 ```
 
 ## Running the Tests
@@ -37,19 +37,19 @@ Because of autoloading, you will either need to be inside Drupal's `core` subdir
 , or add `-c core` to the PHPUnit command when running the tests for them to execute successfully.
 
 This also assumes that the module is within a `modules/custom` directory and
-named `tdd_dublin` as per the repository name.
+named `tdd_blog` as per the repository name.
 
 ```
-vendor/bin/phpunit -c core modules/custom/tdd_dublin
+vendor/bin/phpunit -c core modules/custom/tdd_blog
 ```
 
 You can use PHPUnit's `--filter` option to specify a single test method to run,
 rather than all of the tests within the module. For example:
 
 ```
-vendor/bin/phpunit -c core modules/custom/tdd_dublin --filter=testOnlyPublishedPagesAreShown
+vendor/bin/phpunit -c core modules/custom/tdd_blog --filter=testOnlyPublishedPagesAreShown
 ```
 
-[0]: https://www.oliverdavi.es/talks/tdd-test-driven-drupal
-[1]: https://github.com/opdavies/tdd_dublin/commits/HEAD
-[2]: https://github.com/opdavies/tdd_dublin/tags
+[0]: https://www.oliverdavies.uk/talks/tdd-test-driven-drupal
+[1]: https://github.com/opdavies/drupal-module-tdd-blog/commits/HEAD
+[2]: https://github.com/opdavies/drupal-module-tdd-blog/tags

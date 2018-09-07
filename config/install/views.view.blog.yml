@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.page
+  - node.type.article
   module:
-    - node
-    - user
-id: pages
-label: pages
+  - node
+  - user
+id: blog
+label: Blog
 module: views
 description: ''
 tag: ''
@@ -147,7 +147,7 @@ display:
           admin_label: ''
           operator: in
           value:
-            page: page
+            article: article
           group: 1
           exposed: false
           expose:
@@ -179,10 +179,10 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        title:
-          id: title
+        created:
+          id: created
           table: node_field_data
-          field: title
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
@@ -190,9 +190,10 @@ display:
           exposed: false
           expose:
             label: ''
+          granularity: second
           entity_type: node
-          entity_field: title
-          plugin_id: standard
+          entity_field: created
+          plugin_id: date
       header: {  }
       footer: {  }
       empty: {  }
@@ -202,11 +203,11 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - url.query_args
+      - 'user.node_grants:view'
+      - user.permissions
       tags: {  }
   page_1:
     display_plugin: page
@@ -215,13 +216,13 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: pages
+      path: blog
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
+      - 'languages:language_content'
+      - 'languages:language_interface'
+      - url.query_args
+      - 'user.node_grants:view'
+      - user.permissions
       tags: {  }

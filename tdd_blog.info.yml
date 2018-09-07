@@ -1,4 +1,4 @@
-name: 'TDD Dublin'
+name: 'TDD Blog'
 description: 'A demo module for DrupalCamp Dublin to show test driven module development.'
 core: 8.x
 type: module
