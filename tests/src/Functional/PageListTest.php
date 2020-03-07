@@ -8,6 +8,8 @@ class PageListTest extends BrowserTestBase {
 
   protected static $modules = ['tdd_blog'];
 
+  protected $defaultTheme = 'stark';
+
   public function testBlogPageExists() {
     $this->drupalGet('blog');
 
