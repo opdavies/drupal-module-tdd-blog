@@ -3,6 +3,7 @@
 namespace Drupal\Tests\tdd_blog\Functional;
 
 use Drupal\Tests\BrowserTestBase;
+use Symfony\Component\HttpFoundation\Response;
 
 class PageListTest extends BrowserTestBase {
 
@@ -13,7 +14,7 @@ class PageListTest extends BrowserTestBase {
   public function testBlogPageExists() {
     $this->drupalGet('blog');
 
-    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
   }
 
 }
