@@ -1,6 +1,6 @@
-# TDD Example Drupal 8 Module for DrupalCamp Dublin
+# TDD Example Drupal 8 Blog Module
 
-A demo module to accompany my [TDD - Test Driven Drupal][0] talk at DrupalCamp
+A demo module to accompany my [TDD - Test Driven Drupal][0] talk, originally for DrupalCamp
 Dublin 2017.
 
 In order to see my workflow of writing comments first, converting them into
